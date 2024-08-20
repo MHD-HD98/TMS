@@ -1,0 +1,20 @@
+
+streamlit run ultralytics_file_stream.py -- --zone_configuration_path "data/checkout4/config.json" --source_video_path "data/checkout4/video1.mp4" --weights "3.pt" --device "0" --classes --confidence_threshold 0.7 --iou_threshold 0.7 --log_file_path "data/new.txt" --api_url http://localhost:8080/tms/events --feed_device_id "1"
+
+python scripts/draw_zones.py --source_path "data/checkout4/video.mp4" --zone_configuration_path "data/checkout4/config.json"
+
+
+
+event = [AC_ON_STAND,AC_OFF_STAND,CHOCKS_ON ,CHOCKS_OFF,PBB_FWD_ON,PBB_FWD_OFF,PBB_AFT_ON,PBB_AFT_OFF,CGO_FWD_OT,CGO_FWD_CT,CGO_AFT_OT,CGO_AFT_CT,
+CABIN_FWD_OT,CABIN_FWD_CT,CABIN_AFT_OT,CABIN_AFT_CT,FUEL_ST,FUEL_ET,CAT_ST,CAT_ET,CAT2_ST,CAT2_ET,PBT_ST,PBT_ET]
+
+ultralytics_file_vid.py --zone_configuration_path "data/checkout4/config.json" --source_video_path "data/checkout4/video1.mp4" --weights "3.pt" --device "0" --classes --confidence_threshold 0.7 --iou_threshold 0.7 --log_file_path "data/new.txt" --api_url http://localhost:8080/tms/events --feed_device_id "1"
+
+python scripts/stream_from_file.py --video_directory "tmp" --number_of_streams 1
+
+python scripts/fi1.py --video_file "tmp/out.mp4" 
+
+python scripts/file.py --video_file "tmp/out.mp4" 
+
+
+
